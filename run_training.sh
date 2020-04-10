@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-python run_squad.py \
+python training/run_squad.py \
   --model_type bert \
   --model_name_or_path bert-base-uncased \
+  --overwrite_output_dir \
   --do_train \
   --do_eval \
   --do_lower_case \
