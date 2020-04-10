@@ -37,7 +37,7 @@ class QA:
 
 
     def load_model(self,model_path: str,do_lower_case=False):
-        config = BertConfig.from_pretrained(model_path + "/bert_config.json")
+        config = BertConfig.from_pretrained(model_path + "/config.json")
         tokenizer = BertTokenizer.from_pretrained(model_path, do_lower_case=do_lower_case)
         model = BertForQuestionAnswering.from_pretrained(model_path, from_tf=False, config=config)
         return model, tokenizer

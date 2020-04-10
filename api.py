@@ -1,15 +1,19 @@
+import os
+
 from flask import Flask,request,jsonify
 from flask_cors import CORS
+from dotenv import load_dotenv
 
 from bert import QA
 
 app = Flask(__name__)
 CORS(app)
 
-model = QA("model")
+load_dotenv()
+model = QA(os.getenv("OUTPUT_DIR"))
 
 
-@app.route("/predict",methods=['POST'])
+@app.route("/predict", methods=['POST'])
 def predict():
     doc = request.json["document"]
     q = request.json["question"]
@@ -22,4 +26,4 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run('0.0.0.0', port=8000)
+    app.run('0.0.0.0', port=8000, debug=True)
